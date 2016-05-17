@@ -1,0 +1,429 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Youku API",
+        "description": "优酷视频云的YoukuOpenAPI",
+        "version": "2.0"
+    },
+    "host": "openapi.youku.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v2",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users/show.json": {
+            "post": {
+                "summary": "单条用户详细信息(users/show)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "用户ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "users0": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "subscribe_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "被订阅数"
+                },
+                "vv_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频播放数"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users1": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "following": {
+                    "type": "boolean",
+                    "description": "是否是我的关注"
+                },
+                "follower": {
+                    "type": "boolean",
+                    "description": "是否是我的粉丝"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users3": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "结果码（为0时表示成功，小于0时失败）"
+                }
+            }
+        },
+        "users4": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "符合条件的节目数量"
+                },
+                "show": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/show"
+                    }
+                }
+            }
+        },
+        "show": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "节目ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "节目名称"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "节目链接"
+                },
+                "play_link": {
+                    "type": "string",
+                    "description": "节目播放链接"
+                },
+                "poster": {
+                    "type": "string",
+                    "description": "节目海报"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "节目图片"
+                },
+                "streamtypes": {
+                    "type": "string",
+                    "description": "流格式flvhd flv 3gphd 3gp hd hd2"
+                },
+                "episode_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总集数"
+                },
+                "episode_updated": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "更新至"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "score": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "评分"
+                },
+                "paid": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否付费0.否 1.是"
+                },
+                "released": {
+                    "type": "string",
+                    "description": "节目发行时间(YYYY-MM-DD)"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "优酷发行时间(YYYY-MM-DD)"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "节目类型"
+                },
+                "hasvideotype": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": "节目包含的视频类型"
+                },
+                "completed": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否完结"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "lastupdate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "节目最后更新时间"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
