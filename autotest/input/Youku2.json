@@ -14,11 +14,11 @@
         "application/json"
     ],
     "paths": {
-        "/users/show.json": {
+        "/comments/create.json": {
             "post": {
-                "summary": "单条用户详细信息(users/show)",
+                "summary": "评论创建(comments/create)",
                 "tags": [
-                    "users"
+                    "comments"
                 ],
                 "consumes": [
                     "application/x-www-form-urlencoded"
@@ -32,16 +32,44 @@
                         "type": "string"
                     },
                     {
-                        "name": "user_id",
+                        "name": "access_token",
                         "in": "formData",
-                        "description": "用户ID",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "formData",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "formData",
+                        "description": "评论内容",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reply_id",
+                        "in": "formData",
+                        "description": "回复ID",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "user_name",
+                        "name": "captcha_key",
                         "in": "formData",
-                        "description": "用户名",
+                        "description": "验证码key",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "captcha_text",
+                        "in": "formData",
+                        "description": "验证码内容",
                         "required": false,
                         "type": "string"
                     }
@@ -50,7 +78,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/users0"
+                            "$ref": "#/definitions/comments5"
                         }
                     },
                     "default": {
@@ -422,6 +450,15 @@
                 },
                 "description": {
                     "type": "string"
+                }
+            }
+        },
+                "comments5": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
                 }
             }
         }

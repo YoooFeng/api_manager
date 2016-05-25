@@ -1,0 +1,94 @@
+2016-05-22 15:51:09,953 - my_tester.py:427 - tst - TESTING GET /2/comments/to_me.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:10,525 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:10,532 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:10,533 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'interval', u'hasvisible', u'total_number', u'previous_cursor', u'comments', u'next_cursor']
+2016-05-22 15:51:10,533 - my_tester.py:200 - tst - Missing parameters in response:['status', 'text', 'created_at', 'mid', 'idstr', 'source', 'user', 'reply_comment', 'id']
+2016-05-22 15:51:10,533 - my_tester.py:427 - tst - TESTING GET /2/friendships/friends/in_common.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&uid=3018062965
+2016-05-22 15:51:10,581 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:10,582 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:10,582 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:10,582 - my_tester.py:200 - tst - Missing parameters in response:['bi_followers_count', 'domain', 'avatar_large', 'id', 'city', 'verified_reason', 'followers_count', 'location', 'profile_url', 'province', 'avatar_hd', 'statuses_count', 'description', 'friends_count', 'online_status', 'idstr', 'profile_image_url', 'screen_name', 'lang', 'weihao', 'remark', 'favourites_count', 'name', 'url', 'gender', 'created_at', 'status', 'verified_type']
+2016-05-22 15:51:10,582 - my_tester.py:427 - tst - TESTING GET /2/comments/by_me.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:10,763 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:10,772 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:10,772 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'interval', u'hasvisible', u'total_number', u'previous_cursor', u'comments', u'next_cursor']
+2016-05-22 15:51:10,772 - my_tester.py:200 - tst - Missing parameters in response:['status', 'text', 'created_at', 'mid', 'idstr', 'source', 'user', 'reply_comment', 'id']
+2016-05-22 15:51:10,773 - my_tester.py:427 - tst - TESTING GET /2/users/show.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,020 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 15:51:11,022 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,022 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:11,022 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,023 - my_tester.py:427 - tst - TESTING GET /2/search/suggestions/companies.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&q=cat
+2016-05-22 15:51:11,078 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,078 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,078 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,079 - my_tester.py:427 - tst - TESTING GET /2/users/domain_show.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&domain=zaku
+2016-05-22 15:51:11,121 - my_tester.py:446 - tst - Got status code: 415
+2016-05-22 15:51:11,121 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,121 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:11,121 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,121 - my_tester.py:427 - tst - TESTING GET /2/search/suggestions/users.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&q=cat
+2016-05-22 15:51:11,173 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,173 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,173 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'followers_count', u'screen_name', u'uid']
+2016-05-22 15:51:11,173 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,173 - my_tester.py:427 - tst - TESTING GET /2/friendships/friends/bilateral.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&uid=3018062965
+2016-05-22 15:51:11,214 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,214 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,214 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:11,214 - my_tester.py:200 - tst - Missing parameters in response:['bi_followers_count', 'domain', 'avatar_large', 'id', 'city', 'verified_reason', 'followers_count', 'location', 'profile_url', 'province', 'avatar_hd', 'statuses_count', 'description', 'friends_count', 'online_status', 'idstr', 'profile_image_url', 'screen_name', 'lang', 'weihao', 'remark', 'favourites_count', 'name', 'url', 'gender', 'created_at', 'status', 'verified_type']
+2016-05-22 15:51:11,216 - my_tester.py:427 - tst - TESTING GET /2/friendships/friends/bilateral/ids.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&uid=3018062965
+2016-05-22 15:51:11,250 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,250 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,250 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:11,250 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,250 - my_tester.py:427 - tst - TESTING GET /2/comments/show.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&id=11488058246
+2016-05-22 15:51:11,301 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,302 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,302 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'interval', u'hasvisible', u'total_number', u'previous_cursor', u'comments', u'next_cursor']
+2016-05-22 15:51:11,302 - my_tester.py:200 - tst - Missing parameters in response:['status', 'text', 'created_at', 'mid', 'idstr', 'source', 'user', 'reply_comment', 'id']
+2016-05-22 15:51:11,302 - my_tester.py:427 - tst - TESTING GET /2/statuses/home_timeline.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,453 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,456 - my_tester.py:140 - tst - Got type error:ad,should be <type 'list'>, but is <type 'dict'>
+2016-05-22 15:51:11,456 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'advertises', u'previous_cursor', u'hasvisible', u'total_number', u'uve_blank', u'interval', u'has_unread', u'since_id', u'next_cursor', u'max_id', u'statuses']
+2016-05-22 15:51:11,457 - my_tester.py:200 - tst - Missing parameters in response:['reposts_count', 'original_pic', 'retweeted_status', 'source', 'thumbnail_pic', 'text', 'created_at', 'mlevel', 'mid', 'idstr', 'attitudes_count', 'visible', 'in_reply_to_status_id', 'in_reply_to_screen_name', 'in_reply_to_user_id', 'bmiddle_pic', 'pic_ids', 'geo', 'id', 'comments_count', 'user']
+2016-05-22 15:51:11,457 - my_tester.py:427 - tst - TESTING GET /2/users/counts.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&uids=3018062965
+2016-05-22 15:51:11,506 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,506 - my_tester.py:140 - tst - Got type error:id,should be <type 'long'>, but is <type 'int'>
+2016-05-22 15:51:11,506 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'pagefriends_count', u'private_friends_count']
+2016-05-22 15:51:11,506 - my_tester.py:200 - tst - Missing parameters in response:['bi_followers_count', 'domain', 'avatar_large', 'city', 'verified_reason', 'location', 'profile_url', 'province', 'avatar_hd', 'description', 'online_status', 'idstr', 'profile_image_url', 'name', 'lang', 'weihao', 'remark', 'favourites_count', 'screen_name', 'url', 'gender', 'created_at', 'status', 'verified_type']
+2016-05-22 15:51:11,506 - my_tester.py:427 - tst - TESTING GET /2/statuses/friends_timeline.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,625 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,627 - my_tester.py:140 - tst - Got type error:ad,should be <type 'list'>, but is <type 'dict'>
+2016-05-22 15:51:11,627 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'advertises', u'previous_cursor', u'hasvisible', u'total_number', u'uve_blank', u'interval', u'has_unread', u'since_id', u'next_cursor', u'max_id', u'statuses']
+2016-05-22 15:51:11,627 - my_tester.py:200 - tst - Missing parameters in response:['reposts_count', 'original_pic', 'retweeted_status', 'source', 'thumbnail_pic', 'text', 'created_at', 'mlevel', 'mid', 'idstr', 'attitudes_count', 'visible', 'in_reply_to_status_id', 'in_reply_to_screen_name', 'in_reply_to_user_id', 'bmiddle_pic', 'pic_ids', 'geo', 'id', 'comments_count', 'user']
+2016-05-22 15:51:11,627 - my_tester.py:427 - tst - TESTING GET /2/statuses/public_timeline.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,694 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,696 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,697 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'interval', u'hasvisible', u'total_number', u'previous_cursor', u'next_cursor', u'statuses']
+2016-05-22 15:51:11,697 - my_tester.py:200 - tst - Missing parameters in response:['reposts_count', 'pic_ids', 'retweeted_status', 'visible', 'thumbnail_pic', 'text', 'created_at', 'mlevel', 'idstr', 'mid', 'source', 'attitudes_count', 'in_reply_to_screen_name', 'user', 'bmiddle_pic', 'in_reply_to_status_id', 'original_pic', 'geo', 'id', 'comments_count', 'in_reply_to_user_id']
+2016-05-22 15:51:11,697 - my_tester.py:427 - tst - TESTING GET /2/search/suggestions/apps.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&q=cat
+2016-05-22 15:51:11,736 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,736 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,736 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'apps_name', u'members_count']
+2016-05-22 15:51:11,736 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,737 - my_tester.py:427 - tst - TESTING GET /2/friendships/friends.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,786 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 15:51:11,786 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,786 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error_code', u'request', u'error']
+2016-05-22 15:51:11,786 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,786 - my_tester.py:427 - tst - TESTING GET /2/search/suggestions/schools.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC&q=cat
+2016-05-22 15:51:11,828 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,829 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,829 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'location', u'type', u'id', u'school_name']
+2016-05-22 15:51:11,829 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,829 - my_tester.py:427 - tst - TESTING GET /2/friendships/friends/ids.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,872 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,872 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,874 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total_number', u'previous_cursor', u'ids', u'next_cursor']
+2016-05-22 15:51:11,874 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']
+2016-05-22 15:51:11,874 - my_tester.py:427 - tst - TESTING GET /2/statuses/friends_timeline/ids.json?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC
+2016-05-22 15:51:11,933 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 15:51:11,933 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 15:51:11,933 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'advertises', u'previous_cursor', u'hasvisible', u'ad', u'total_number', u'uve_blank', u'interval', u'next_cursor', u'statuses']
+2016-05-22 15:51:11,933 - my_tester.py:200 - tst - Missing parameters in response:['fields', 'message', 'code']

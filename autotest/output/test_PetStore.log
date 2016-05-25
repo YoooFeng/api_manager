@@ -1,0 +1,50 @@
+2016-05-12 09:39:21,960 - my_tester.py:316 - tst - TESTING POST /v2/pet/42/uploadImage?
+2016-05-12 09:39:22,483 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:22,486 - my_tester.py:316 - tst - TESTING POST /v2/user/createWithList?
+2016-05-12 09:39:23,017 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:23,020 - my_tester.py:316 - tst - TESTING POST /v2/pet/42?
+2016-05-12 09:39:23,545 - my_tester.py:334 - tst - Got status code: 404
+2016-05-12 09:39:23,548 - my_tester.py:316 - tst - TESTING POST /v2/user?
+2016-05-12 09:39:24,075 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:24,078 - my_tester.py:316 - tst - TESTING POST /v2/store/order?
+2016-05-12 09:39:24,592 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:24,596 - my_tester.py:316 - tst - TESTING POST /v2/pet?
+2016-05-12 09:39:25,125 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:25,128 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:25,131 - my_tester.py:316 - tst - TESTING POST /v2/user/createWithArray?
+2016-05-12 09:39:25,660 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:25,663 - my_tester.py:316 - tst - TESTING POST /v2/pet/42?
+2016-05-12 09:39:26,196 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:26,197 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:26,200 - my_tester.py:316 - tst - TESTING GET /v2/store/order/42?
+2016-05-12 09:39:26,716 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:26,719 - my_tester.py:316 - tst - TESTING GET /v2/user/string?
+2016-05-12 09:39:27,236 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:27,239 - my_tester.py:316 - tst - TESTING GET /v2/pet/findByStatus?status=string%2Cstring2
+2016-05-12 09:39:27,808 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:27,812 - my_tester.py:316 - tst - TESTING GET /v2/user/logout?
+2016-05-12 09:39:28,331 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:28,335 - my_tester.py:316 - tst - TESTING GET /v2/store/inventory?
+2016-05-12 09:39:28,865 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:28,868 - my_tester.py:356 - tst - Error in the swagger file: TypeError("'NoneType' object has no attribute '__getitem__'",)
+2016-05-12 09:39:28,871 - my_tester.py:316 - tst - TESTING GET /v2/user/login?username=string&password=string
+2016-05-12 09:39:29,403 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:29,405 - my_tester.py:316 - tst - TESTING GET /v2/pet/42?
+2016-05-12 09:39:29,940 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:29,943 - my_tester.py:316 - tst - TESTING GET /v2/pet/findByTags?tags=string%2Cstring2
+2016-05-12 09:39:32,029 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:32,051 - my_tester.py:316 - tst - TESTING PUT /v2/user/string?
+2016-05-12 09:39:32,579 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:32,584 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:32,586 - my_tester.py:316 - tst - TESTING PUT /v2/pet?
+2016-05-12 09:39:33,109 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:33,112 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:33,117 - my_tester.py:316 - tst - TESTING DELETE /v2/pet/42?
+2016-05-12 09:39:33,631 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:33,634 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:33,637 - my_tester.py:316 - tst - TESTING DELETE /v2/store/order/42?
+2016-05-12 09:39:34,157 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:34,161 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.
+2016-05-12 09:39:34,163 - my_tester.py:316 - tst - TESTING DELETE /v2/user/string?
+2016-05-12 09:39:34,681 - my_tester.py:334 - tst - Got status code: 200
+2016-05-12 09:39:34,684 - my_tester.py:385 - tst - Got status code 200, but undefined in spec.

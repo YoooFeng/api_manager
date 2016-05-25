@@ -168,19 +168,53 @@ def instagram_example():
 
 def weibo_example():
     return{
-        'access_token':'2.00DZF25D0VoLUHd3b86d0341gT8NxC',
-
+        'access_token': '2.00DZF25D0VoLUHd3b86d0341gT8NxC',
+        'id': u'11488058246',
+        'ids': u'11488058246,1073880650',
+        'type': 1,
+        'mid': u'8Ras3qlz',
+        'uid': 3018062965,
+        'uids': 3018062965,
+        'status': u'666666666',
+        'pic': '',
+        'cids': 12438492184,
+        'comment': u'66666666666',
+        'cid': 12438492184,
+        'domain': u'zaku',
+        'tid': 63,
+        'tag': u'cat',
+        'q': u'cat',
+        'type': 0,
+        'url_long': u'http://finance.sina.com.cn/',
+        'url_short': u'http://t.cn/h4DwT1',
+        'codes': '100',
+        'province': '001011',
+        'country': '001',
+        'poiid': 'P010A00CHR9',
+        'lat': 38.685945,
+        'long': 56.87245,
+        'keyword': u'cat',
+        'title': u'6666666666',
+        'category': 500,
+        'city': '0010',
+        'ip': '133.133.133.120',
+        'address': u'北京市海淀区中关村一条',
+        'coordinate': '38.563445,12.2463242',
+        'srcids': '',
+        'srcid': '',
+        'name': '好烦啊',
+        'json': '',
     }
 
 def uber_example():
     return {
         'latitude': 38.76623,
-        'longitude':116.43213,
-        'start_latitude':38.76623,
-        'start_longitude':116.43213,
-        'end_latitude':39.917023,
-        'end_longitude':116.396813,
-        'access_token':'CjCEg6plCW4SH1X3bVHjQKFpNtBeAD9TTcSVMg2k'
+        'longitude': 116.43213,
+        'start_latitude': 38.76623,
+        'start_longitude': 116.43213,
+        'end_latitude': 39.917023,
+        'end_longitude': 116.396813,
+        'access_token': 'CjCEg6plCW4SH1X3bVHjQKFpNtBeAD9TTcSVMg2k'
     }
 
 def youku_example():
@@ -188,5 +222,13 @@ def youku_example():
         'access_token': '24f0d08646c6b21bc5ad4ce8641e6e50',
         'client_id': '007ad73d2453bd70',
         'user_id': '87919223',
-        'show_id': '2a7260de1faa11e097c0'
+        'show_id': '2a7260de1faa11e097c0',
+        'user_ids': '87919223,2071704',
+        'comment_id': '4e263a4c67c6e27d4d000000',
+        'video_id': 'XMjg1MTcyNDQ0',
+        'content': '哈哈哈，真是666666',
+        'video_ids': 'XMjg1MTcyNDQ0,XNDY5Njc0MTA4',
+        'comment_ids': '4e263a4c67c6e27d4d000000',
+
+
     }

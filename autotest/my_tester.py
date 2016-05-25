@@ -3,11 +3,11 @@
 import json
 import logging
 import logging.handlers
-import os
 import requests
 import six
 import time
 import param_generator
+import tablib
 
 try:
     from urllib import urlencode
@@ -29,6 +29,7 @@ logger.addHandler(handler)           # 为logger添加handler
 
 logger.setLevel(logging.INFO)
 
+
 #生成request参数的函数
 def get_request_args(path, action, swagger_parser):
     """
@@ -49,7 +50,7 @@ def get_request_args(path, action, swagger_parser):
     return request_args
 
 #从配置文件中读取参数的值
-def get_args_from_example(path,action,swagger_parser):
+def get_args_from_example(path, action, swagger_parser):
     request_args = {}
     if path in swagger_parser.paths.keys() and action in swagger_parser.paths[path].keys():
         operation_spec = swagger_parser.paths[path][action]
@@ -58,7 +59,7 @@ def get_args_from_example(path,action,swagger_parser):
             for param_name in operation_spec['parameters'].keys():
                 if 'required' in operation_spec['parameters'][param_name] and operation_spec['parameters'][param_name]['required'] > 0:
                     #从不同的配置文件（函数）读取参数
-                    request_args[param_name] = param_generator.youku_example()[param_name]
+                    request_args[param_name] = param_generator.instagram_example()[param_name]
     return request_args
 
 
@@ -78,7 +79,7 @@ def validate_petstore_definition(swagger_parser, valid_response, response):
         return
 
     if valid_response == '' or valid_response is None:
-        assert response is None or response == ''
+        #assert response is None or response == ''
         return
 
     #返回的是一个list的情况
@@ -98,8 +99,11 @@ def validate_petstore_definition(swagger_parser, valid_response, response):
             assert type(response) == type(valid_response)
     elif isinstance(response, dict) and isinstance(valid_response, dict):
         #利用swagger_parser提供的函数，在spec中寻找能够匹配的response
-        assert len(set(swagger_parser.get_dict_definition(valid_response, get_list=True))
-                   .intersection(swagger_parser.get_dict_definition(response, get_list=True))) >= 1
+        try:
+            assert len(set(swagger_parser.get_dict_definition(valid_response, get_list=True))
+                       .intersection(swagger_parser.get_dict_definition(response, get_list=True))) >= 1
+        except:
+            return
         #分别寻找两个response的集合的交来区分是否匹配
 
 #验证返回值的类型是否与文档描述一致
@@ -109,27 +113,43 @@ def validate_obj_type(response_data, valid_response_data, inter_dict):
         if isinstance(response_data[k], dict):   #如果返回的是一个封装的对象，验证对象的内部
             for _k in response_data[k].keys():
                 if isinstance(response_data[k][_k], dict):
-                    validate_obj_type(response_data[k][_k], valid_response_data[k][_k], valid_response_data[k][_k])   #inter_dict中有键无值
-                else:
                     try:
-                        assert type(response_data[k][_k]) == type(valid_response_data[k][_k])
-                    except AssertionError as exc:
-                        logger.info(u'Got type error:{0},should be {1}, but is {2}'.format(_k, type(response_data[k][_k]), type(valid_response_data[k][_k])))
-                        print(u'Got type error:{0},should be {1}, but is {2}'.format(_k, type(response_data[k][_k]), type(valid_response_data[k][_k])))
+                        assert _k in valid_response_data[k]
+                    except AssertionError:
+                        logger.info(u'{0}{1}'.format('Undefined response parameters in Swagger Spec:', k + ':' + _k))
+                        print (u'{0}{1}'.format('Undefined response parameters in Swagger Spec:', k + ':' + _k))
+                    else:
+                        validate_obj_type(response_data[k][_k], valid_response_data[k][_k], valid_response_data[k][_k])   #inter_dict中有键无值
+                else:
+                    if _k not in valid_response_data[k]:
+                        try:
+                            assert _k in valid_response_data[k]
+                        except AssertionError:
+                            logger.info(u'Got parameter name error in spec:{0}'.format(_k))
+                            print(u'Got parameter name error in spec:{0}'.format(_k))
+                    else:
+                        try:
+                            assert type(response_data[k][_k]) == type(valid_response_data[k][_k])
+                        except AssertionError as exc:
+                            logger.info(u'Got type error:{0},should be {1}, but is {2}'.format(_k, type(valid_response_data[k][_k]), type(response_data[k][_k])))
+                            print(u'Got type error:{0},should be {1}, but is {2}'.format(_k, type(valid_response_data[k][_k]), type(response_data[k][_k])))
         else:
             try:
                 assert type(response_data[k]) == type(valid_response_data[k])
             except AssertionError as exc:
-                logger.info(u'Got type error:{0},should be {1}, but is {2}'.format(k,type(response_data[k]),  type(valid_response_data[k])))
-                print(u'Got type error:{0},should be {1}, but is {2}'.format(k,type(response_data[k]),  type(valid_response_data[k])))
-
+                logger.info(u'Got type error:{0},should be {1}, but is {2}'.format(k, type(valid_response_data[k]), type(response_data[k])))
+                print(u'Got type error:{0},should be {1}, but is {2}'.format(k, type(valid_response_data[k]), type(response_data[k])))
+    return
 
 def validate_ins_definition(swagger_parser, valid_response, response):
-    if isinstance(response['data'],list) and len(response['data']) > 0:
+    if isinstance(response['data'], list) and len(response['data']) > 0:
         response_data = response['data'][0] #将list转化为dict类型
+    #没有返回数据的情况。只有一个标示操作成功的bool值
+    elif response['data'] is None:
+        return True
     else:
         response_data = response['data']
-    if isinstance(valid_response,list) and len(valid_response) > 0:
+    if isinstance(valid_response, list) and len(valid_response) > 0:
         valid_response_data = valid_response[0]
     else:
         valid_response_data = valid_response
@@ -150,9 +170,18 @@ def validate_ins_definition(swagger_parser, valid_response, response):
         logger.info(u'{0}{1}'.format('Missing parameters in response:',res_ret_dict.keys()))
         print (u'{0}{1}'.format('Missing parameters in response:',res_ret_dict.keys()))
 
-    return
+    if len(ret_dict) > 0 or len(res_ret_dict) > 0:
+        return True
+    return False
 
 def validate_uber_definition(swagger_parser, valid_response, response):
+    if isinstance(response, list) and len(response) > 0:
+        response = response[0]
+    if isinstance(valid_response, list):
+        valid_response = valid_response[0]
+    if response is None or valid_response is None:
+        return True
+
     inter_dict = dict.fromkeys(k for k in response if k in valid_response)    #求两个字典的交集
     #判断返回值的类型是否一致
     validate_obj_type(response, valid_response, inter_dict)
@@ -161,6 +190,9 @@ def validate_uber_definition(swagger_parser, valid_response, response):
     res_ret_dict = dict.fromkeys(k for k in valid_response if k not in response)    #求两个字典的差集，即返回的数据中缺少的值
 
     #根据交集和差集的情况对返回值一致性进行判断
+    if len(inter_dict) == 0:    #交集为空，说明返回值和文档中定义的数据结构不同，导致对比失败,可进行进一步对比,思路就是遍历返回的值，将值类型为list或者dict的键找出来对比
+        logger.info(u'Data structure of response is different from Swagger Spec!')
+        print (u'Data structure of response is different from Swagger Spec!')
     if len(ret_dict) > 0: #返回值没有在文档中定义的情况
         logger.info(u'{0}{1}'.format('Undefined response parameters in Swagger Spec:',ret_dict.keys()))
         print (u'{0}{1}'.format('Undefined response parameters in Swagger Spec:',ret_dict.keys()))
@@ -168,7 +200,9 @@ def validate_uber_definition(swagger_parser, valid_response, response):
         logger.info(u'{0}{1}'.format('Missing parameters in response:',res_ret_dict.keys()))
         print (u'{0}{1}'.format('Missing parameters in response:',res_ret_dict.keys()))
 
-    return
+    if len(ret_dict) > 0 or len(res_ret_dict) > 0:
+        return True
+    return False
 
 
 def validate_youku_definition(swagger_parser, valid_response, response):
@@ -193,8 +227,7 @@ def parse_parameters(url, action, path, request_args, swagger_parser):
     body = None
     query_params = {}
     files = {}
-    #headers = [('Content-Type', 'application/json')]
-    headers = [('Content-Type', 'application/json')]    #uber的header
+    headers = [('Content-Type', 'application/json')]
 
     if path in swagger_parser.paths.keys() and action in swagger_parser.paths[path].keys() and len(request_args)>=1:
         operation_spec = swagger_parser.paths[path][action]
@@ -215,7 +248,7 @@ def parse_parameters(url, action, path, request_args, swagger_parser):
                     else:
                         #否则直接转换为字符串
                         query_params[parameter_name] = str(request_args[parameter_name])
-                        #如果参数in:的值为formData
+                #如果参数in:的值为formData
                 elif parameter_spec['in'] == 'formData':
                     if body is None:
                         body = {}
@@ -251,17 +284,17 @@ def get_url_body_from_request(action, path, request_args, swagger_parser):
     #url?param的格式
     url = '{0}?{1}'.format(url, urlencode(query_params))
     #视情况在url末尾加入access_token,由于instagram所有的action均需要access_token参数，但是有?+access_token和&+access_token两种形式
-    '''
+
     if 'shoutaro_010' in url:
         url = url + '&access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d' #ins
     elif url[len(url)-1] == '?':
-        #url = url + 'access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d' #ins
+        url = url + 'access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d' #ins
         #url = url + 'access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC' #微博
 
     else:
-        #url = url + '?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d' #ins
+        url = url + '?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d' #ins
         #url = url + '?access_token=2.00DZF25D0VoLUHd3b86d0341gT8NxC' #微博
-    '''
+
     #对header进行处理
     if ('Content-Type', 'multipart/form-data') not in headers:
         try:
@@ -273,7 +306,7 @@ def get_url_body_from_request(action, path, request_args, swagger_parser):
 
     return url, body, headers, files
 
-
+#根据不同的访问方法动态生成本地客户端
 def get_method_from_action(client, action):
     """根据action的类型生成client
     :param client: flask client
@@ -312,7 +345,7 @@ def swagger_test(swagger_yaml_path=None, app_url=None, authorize_error=None,
 
 def get_action_from_path(swagger_parser):
     path_operation_sorted = {'post': [], 'get': [], 'put': [], 'patch': [], 'delete': []}
-    for key,value in swagger_parser.paths.items():
+    for key, value in swagger_parser.paths.items():
         if 'post' in value:
             path_operation_sorted['post'].append((key, u'post'))
         if 'get' in value:
@@ -336,15 +369,6 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
 
     #本地文件的情况
     if swagger_yaml_path is not None:
-        '''
-        #如果是相对路径就转化为绝对路径，并且使用connexion这个包的App方法来处理swagger文档
-        app = connexion.App(__name__, port=8080, debug=True, specification_dir=os.path.dirname(os.path.realpath(swagger_yaml_path)),swagger_json=False)
-        app.add_api(os.path.basename(swagger_yaml_path))
-        #connexion中提供了生成client的方法
-        app_client = app.app.test_client()
-        #使用swagger_parser处理swagger文档
-        swagger_parser = SwaggerParser(swagger_yaml_path, use_example=False)
-       '''
         app_client = requests
         swagger_parser = SwaggerParser(swagger_path=swagger_yaml_path,use_example=True)
 
@@ -373,7 +397,14 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
 
     postponed = []
 
-    #按上面的顺序对各个方法进行测试
+    #记录测试的API数目
+    test_no = 0
+    #将测试信息输出到excel表格中
+    excel_headers = ('No.', 'path', 'action', 'status_code', 'inconsisdency', 'error_info')
+    excel_dataset = tablib.Dataset()
+    excel_dataset.headers = excel_headers
+
+#按上面的顺序对各个方法进行测试
     for action in ['post', 'get', 'put', 'patch', 'delete']:
         for operation in operation_sorted[action]:
             if flag == 0:
@@ -387,6 +418,7 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
 
 
             #调用函数得到自动生成的参数#####################################################
+            #request_args = get_args_from_example(path, action, swagger_parser)
             request_args = get_args_from_example(path, action, swagger_parser)
             #处理url
             url, body, headers, files = get_url_body_from_request(action, path, request_args, swagger_parser)
@@ -413,10 +445,6 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
             #直接访问response的status_code方法得到状态码
             logger.info(u'Got status code: {0}'.format(response.status_code))
             print(u'Got status code: {0}'.format(response.status_code))
-
-
-
-
 
             #检查得到的状态码是不是authorize error中定义的
             if (action in authorize_error and path in authorize_error[action] and
@@ -457,9 +485,9 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
                 #assert response.status_code < 400
 
                 if response.status_code in response_spec.keys():
-                    validate_uber_definition(swagger_parser, response_spec[response.status_code], response_json)
+                    inconsisdency = validate_ins_definition(swagger_parser, response_spec[response.status_code], response_json)
                 elif 'default' in response_spec.keys():
-                    validate_uber_definition(swagger_parser, response_spec['default'], response_json)
+                    inconsisdency = validate_ins_definition(swagger_parser, response_spec['default'], response_json)
                 #所有状态码【200】 都视为正确的返回,如果没有写200的参数，那么默认返回没有参数，而是一个标示操作成功的bool
                 elif response.status_code is 200:
                     logger.info('Got status code 200, but undefined in spec.')
@@ -469,6 +497,19 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
                 else:
                     logger.info(u'Got status code:{0},parameters error or authorization error.'.format(response.status_code))
 
+
+                if response.status_code == 200:
+                    test_no += 1
+                    if inconsisdency:
+                        excel_dataset.append([test_no, path, action, response.status_code, 'Yes', '-'])
+                    else:
+                        excel_dataset.append([test_no, path, action, response.status_code, 'No', '-'])
+                else:
+                    test_no += 1
+                    #excel_dataset.append([test_no, path, action, response.status_code, '-', response.reason])
+                    excel_dataset.append([test_no, path, action, response.status_code, '-', response.content])
+
+
                 if wait_between_test:  # Wait
                     time.sleep(2)
                 yield (action, operation)
@@ -476,14 +517,23 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
                 #得到404错误，等待后重试
                 if {'action': action, 'operation': operation} in postponed:
                     #如果已经重试过了，报错
-                    raise Exception(u'Invalid status code {0}'.format(response.status_code))
-
-                #将没有重试过的方法放到测试队列最后
-                operation_sorted[action].append(operation)
-                #同时标记为已经推迟过
-                postponed.append({'action': action, 'operation': operation})
+                    logger.info(u'Path {0} has been modified or removed!'.format(path))
+                    test_no += 1
+                    excel_dataset.append([test_no, path, action, response.status_code, '-', response.reason])
+                    postponed.remove({'action': action, 'operation': operation})
+                else:
+                    #将没有重试过的方法放到测试队列最后
+                    operation_sorted[action].append(operation)
+                    #同时标记为已经推迟过
+                    postponed.append({'action': action, 'operation': operation})
                 yield (action, operation)
                 continue
+
+    excel_dataset.title = 'test_result'
+    #导出到Excel表格中
+    excel_file = open('./output/test_excel.xlsx', 'wb')
+    excel_file.write(excel_dataset.xlsx)
+    excel_file.close()
 
 authorize_error = {
     'post': {
@@ -498,7 +548,7 @@ authorize_error = {
 }
 
 
-swagger_test(swagger_yaml_path='./input/Youku2.json',authorize_error=authorize_error)
+swagger_test(swagger_yaml_path='./input/swagger-ins.json',authorize_error=authorize_error)
 #swagger_test(swagger_yaml_path='./input/swagger-petstore.yaml',authorize_error=authorize_error)
 #swagger_test(app_url='http://petstore.swagger.io/v2',authorize_error=authorize_error)
 #swagger_test(app_url='https://apis-guru.github.io/api-models/instagram.com/1.0.0',authorize_error=authorize_error)

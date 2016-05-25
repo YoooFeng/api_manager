@@ -1,0 +1,146 @@
+2016-05-22 21:26:35,148 - my_tester.py:427 - tst - TESTING POST /v1/media/1243167573420321701/likes?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:45,799 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:45,799 - my_tester.py:427 - tst - TESTING POST /v1/media/1243167573420321701/comments?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:46,650 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 21:26:46,651 - my_tester.py:498 - tst - Got status code:400,parameters error or authorization error.
+2016-05-22 21:26:46,651 - my_tester.py:427 - tst - TESTING POST /v1/users/2027730041/relationship?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:47,757 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 21:26:47,759 - my_tester.py:498 - tst - Got status code:400,parameters error or authorization error.
+2016-05-22 21:26:47,759 - my_tester.py:427 - tst - TESTING GET /v1/tags/cat?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:48,585 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:48,585 - my_tester.py:140 - tst - Got type error:name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:48,585 - my_tester.py:427 - tst - TESTING GET /v1/users/self/media/liked?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:49,464 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:filter,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:created_time,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:location,should be <type 'dict'>, but is <type 'NoneType'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,464 - my_tester.py:140 - tst - Got type error:type,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,466 - my_tester.py:140 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:49,466 - my_tester.py:128 - tst - Got parameter name error in spec:username
+2016-05-22 21:26:49,466 - my_tester.py:134 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,466 - my_tester.py:134 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:49,466 - my_tester.py:134 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:49,466 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'user_has_liked', u'link', u'attribution', u'comments', u'caption']
+2016-05-22 21:26:49,466 - my_tester.py:170 - tst - Missing parameters in response:['comments:', 'videos']
+2016-05-22 21:26:49,466 - my_tester.py:427 - tst - TESTING GET /v1/users/search?q=shoutaro_010&access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:50,515 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:50,515 - my_tester.py:140 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:50,516 - my_tester.py:140 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:50,516 - my_tester.py:140 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:50,516 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'username', u'bio', u'website']
+2016-05-22 21:26:50,516 - my_tester.py:170 - tst - Missing parameters in response:['user_name']
+2016-05-22 21:26:50,516 - my_tester.py:427 - tst - TESTING GET /v1/tags/cat/media/recent?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:51,621 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:51,621 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'likes', u'attribution', u'videos', u'tags', u'comments', u'filter', u'images', u'link', u'user', u'created_time', u'user_has_liked', u'users_in_photo', u'caption', u'type', u'id', u'location']
+2016-05-22 21:26:51,621 - my_tester.py:170 - tst - Missing parameters in response:['media_count', 'name']
+2016-05-22 21:26:51,621 - my_tester.py:427 - tst - TESTING GET /v1/users/2027730041/follows?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:52,450 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:52,450 - my_tester.py:170 - tst - Missing parameters in response:['profile_picture', 'user_name', 'id', 'full_name']
+2016-05-22 21:26:52,450 - my_tester.py:427 - tst - TESTING GET /v1/media/popular?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:53,914 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:26:53,914 - my_tester.py:427 - tst - TESTING GET /v1/media/1243167573420321701/likes?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:54,769 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:54,769 - my_tester.py:140 - tst - Got type error:id,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:54,769 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'username', u'profile_picture', u'full_name']
+2016-05-22 21:26:54,769 - my_tester.py:170 - tst - Missing parameters in response:['user_name', 'first_name', 'last_name', 'type']
+2016-05-22 21:26:54,769 - my_tester.py:427 - tst - TESTING GET /v1/locations/213032512/media/recent?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:55,622 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:55,624 - my_tester.py:170 - tst - Missing parameters in response:['comments:', 'likes', 'videos', 'tags', 'filter', 'created_time', 'user', 'images', 'users_in_photo', 'type', 'id', 'location']
+2016-05-22 21:26:55,624 - my_tester.py:427 - tst - TESTING GET /v1/locations/213032512?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:56,605 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:56,605 - my_tester.py:140 - tst - Got type error:id,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:56,605 - my_tester.py:140 - tst - Got type error:name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:56,607 - my_tester.py:427 - tst - TESTING GET /v1/users/2027730041/followed-by?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:57,437 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:57,437 - my_tester.py:170 - tst - Missing parameters in response:['profile_picture', 'user_name', 'id', 'full_name']
+2016-05-22 21:26:57,437 - my_tester.py:427 - tst - TESTING GET /v1/media/1243167573420321701/comments?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:58,283 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:58,283 - my_tester.py:140 - tst - Got type error:created_time,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:58,283 - my_tester.py:140 - tst - Got type error:text,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:58,283 - my_tester.py:128 - tst - Got parameter name error in spec:username
+2016-05-22 21:26:58,283 - my_tester.py:134 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:58,285 - my_tester.py:134 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:58,285 - my_tester.py:134 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:58,285 - my_tester.py:140 - tst - Got type error:id,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:58,285 - my_tester.py:427 - tst - TESTING GET /v1/media/1243167573420321701?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:26:59,301 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:26:59,301 - my_tester.py:140 - tst - Got type error:filter,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,301 - my_tester.py:140 - tst - Got type error:created_time,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:location,should be <type 'dict'>, but is <type 'NoneType'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:type,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:140 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:128 - tst - Got parameter name error in spec:username
+2016-05-22 21:26:59,302 - my_tester.py:134 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:134 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:134 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:26:59,302 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'user_has_liked', u'link', u'attribution', u'comments', u'caption']
+2016-05-22 21:26:59,302 - my_tester.py:170 - tst - Missing parameters in response:['comments:', 'videos']
+2016-05-22 21:26:59,302 - my_tester.py:427 - tst - TESTING GET /v1/locations/search?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:00,131 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 21:27:00,131 - my_tester.py:498 - tst - Got status code:400,parameters error or authorization error.
+2016-05-22 21:27:00,131 - my_tester.py:427 - tst - TESTING GET /v1/geographies//media/recent?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:01,198 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:01,198 - my_tester.py:427 - tst - TESTING GET /v1/media1/BFDqZEgAKhm?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:02,345 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:02,345 - my_tester.py:427 - tst - TESTING GET /v1/users/2027730041?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:03,302 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:username,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:bio,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:website,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:128 - tst - Got parameter name error in spec:followed_by
+2016-05-22 21:27:03,302 - my_tester.py:140 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:27:03,302 - my_tester.py:427 - tst - TESTING GET /v1/users/2027730041/media/recent?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:04,174 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:119 - tst - Undefined response parameters in Swagger Spec:videos:low_bandwidth
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:filter,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:created_time,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:location,should be <type 'dict'>, but is <type 'NoneType'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:url,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:type,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:140 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:27:04,176 - my_tester.py:128 - tst - Got parameter name error in spec:username
+2016-05-22 21:27:04,177 - my_tester.py:134 - tst - Got type error:profile_picture,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,177 - my_tester.py:134 - tst - Got type error:id,should be <type 'int'>, but is <type 'unicode'>
+2016-05-22 21:27:04,177 - my_tester.py:134 - tst - Got type error:full_name,should be <type 'str'>, but is <type 'unicode'>
+2016-05-22 21:27:04,177 - my_tester.py:167 - tst - Undefined response parameters in Swagger Spec:[u'user_has_liked', u'link', u'attribution', u'comments', u'caption']
+2016-05-22 21:27:04,177 - my_tester.py:170 - tst - Missing parameters in response:['comments:']
+2016-05-22 21:27:04,177 - my_tester.py:427 - tst - TESTING GET /v1/users/self/requested-by?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:05,013 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:27:05,013 - my_tester.py:170 - tst - Missing parameters in response:['profile_picture', 'user_name', 'id', 'full_name']
+2016-05-22 21:27:05,013 - my_tester.py:427 - tst - TESTING GET /v1/media/search?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:05,845 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 21:27:05,845 - my_tester.py:498 - tst - Got status code:400,parameters error or authorization error.
+2016-05-22 21:27:05,845 - my_tester.py:427 - tst - TESTING GET /v1/tags/search?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:06,680 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 21:27:06,680 - my_tester.py:498 - tst - Got status code:400,parameters error or authorization error.
+2016-05-22 21:27:06,680 - my_tester.py:427 - tst - TESTING GET /v1/users/self/feed?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:07,740 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:07,740 - my_tester.py:427 - tst - TESTING GET /v1/media/popular?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:08,904 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:08,904 - my_tester.py:520 - tst - Path /media/popular has been modified or removed!
+2016-05-22 21:27:08,904 - my_tester.py:427 - tst - TESTING GET /v1/geographies//media/recent?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:10,092 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:10,092 - my_tester.py:520 - tst - Path /geographies/{geo-id}/media/recent has been modified or removed!
+2016-05-22 21:27:10,092 - my_tester.py:427 - tst - TESTING GET /v1/media1/BFDqZEgAKhm?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:11,105 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:11,105 - my_tester.py:520 - tst - Path /media1/{shortcode} has been modified or removed!
+2016-05-22 21:27:11,105 - my_tester.py:427 - tst - TESTING GET /v1/users/self/feed?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:12,134 - my_tester.py:446 - tst - Got status code: 404
+2016-05-22 21:27:12,134 - my_tester.py:520 - tst - Path /users/self/feed has been modified or removed!
+2016-05-22 21:27:12,134 - my_tester.py:427 - tst - TESTING DELETE /v1/media/1243167573420321701/likes?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:13,342 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 21:27:13,342 - my_tester.py:427 - tst - TESTING DELETE /v1/media/1243167573420321701/comments?access_token=2027730041.7fbdb00.bee5dd2903584453a399a93d93a5c82d
+2016-05-22 21:27:14,454 - my_tester.py:446 - tst - Got status code: 405
+2016-05-22 21:27:14,454 - my_tester.py:498 - tst - Got status code:405,parameters error or authorization error.

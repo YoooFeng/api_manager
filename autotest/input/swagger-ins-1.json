@@ -1,0 +1,364 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Instagram API",
+        "description": "The first version of the Instagram API is an exciting step forward towards\nmaking it easier for users to have open access to their data. We created it\nso that you can surface the amazing content Instagram users share every\nsecond, in fun and innovative ways.\n\nBuild something great!\n\nOnce you've\n[registered your client](http://instagram.com/developer/register/) it's easy\nto start requesting data from Instagram.\n\nAll endpoints are only accessible via https and are located at\n`api.instagram.com`. For instance: you can grab the most popular photos at\nthe moment by accessing the following URL with your client ID\n(replace CLIENT-ID with your own):\n```\n  https://api.instagram.com/v1/media/popular?client_id=CLIENT-ID\n```\nYou're best off using an access_token for the authenticated user for each\nendpoint, though many endpoints don't require it.\nIn some cases an access_token will give you more access to information, and\nin all cases, it means that you are operating under a per-access_token limit\nvs. the same limit for your single client_id.\n\n\n## Limits\nBe nice. If you're sending too many requests too quickly, we'll send back a\n`503` error code (server unavailable).\nYou are limited to 5000 requests per hour per `access_token` or `client_id`\noverall. Practically, this means you should (when possible) authenticate\nusers so that limits are well outside the reach of a given user.\n\n## Deleting Objects\nWe do our best to have all our URLs be\n[RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer).\nEvery endpoint (URL) may support one of four different http verbs. GET\nrequests fetch information about an object, POST requests create objects,\nPUT requests update objects, and finally DELETE requests will delete\nobjects.\n\nSince many old browsers don't support PUT or DELETE, we've made it easy to\nfake PUTs and DELETEs. All you have to do is do a POST with _method=PUT or\n_method=DELETE as a parameter and we will treat it as if you used PUT or\nDELETE respectively.\n\n## Structure\n\n### The Envelope\nEvery response is contained by an envelope. That is, each response has a\npredictable set of keys with which you can expect to interact:\n```json\n{\n    \"meta\": {\n        \"code\": 200\n    },\n    \"data\": {\n        ...\n    },\n    \"pagination\": {\n        \"next_url\": \"...\",\n        \"next_max_id\": \"13872296\"\n    }\n}\n```\n\n#### META\nThe meta key is used to communicate extra information about the response to\nthe developer. If all goes well, you'll only ever see a code key with value\n200. However, sometimes things go wrong, and in that case you might see a\nresponse like:\n```json\n{\n    \"meta\": {\n        \"error_type\": \"OAuthException\",\n        \"code\": 400,\n        \"error_message\": \"...\"\n    }\n}\n```\n\n#### DATA\nThe data key is the meat of the response. It may be a list or dictionary,\nbut either way this is where you'll find the data you requested.\n#### PAGINATION\nSometimes you just can't get enough. For this reason, we've provided a\nconvenient way to access more data in any request for sequential data.\nSimply call the url in the next_url parameter and we'll respond with the\nnext set of data.\n```json\n{\n    ...\n    \"pagination\": {\n        \"next_url\": \"https://api.instagram.com/v1/tags/puppy/media/recent?access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d&max_id=13872296\",\n        \"next_max_id\": \"13872296\"\n    }\n}\n```\nOn views where pagination is present, we also support the \"count\" parameter.\nSimply set this to the number of items you'd like to receive. Note that the\ndefault values should be fine for most applications - but if you decide to\nincrease this number there is a maximum value defined on each endpoint.\n\n### JSONP\nIf you're writing an AJAX application, and you'd like to wrap our response\nwith a callback, all you have to do is specify a callback parameter with\nany API call:\n```\nhttps://api.instagram.com/v1/tags/coffee/media/recent?access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d&callback=callbackFunction\n```\nWould respond with:\n```js\ncallbackFunction({\n    ...\n});\n```\n",
+        "termsOfService": "http://instagram.com/about/legal/terms/api"
+    },
+    "host": "api.instagram.com",
+    "basePath": "/v1",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "Users"
+        },
+        {
+            "name": "Relationships",
+            "description": "Relationships are expressed using the following terms:\n\n**outgoing_status**: Your relationship to the user. Can be \"follows\",\n  \"requested\", \"none\".\n**incoming_status**: A user's relationship to you. Can be \"followed_by\",\n  \"requested_by\", \"blocked_by_you\", \"none\".\n"
+        },
+        {
+            "name": "Media",
+            "description": "At this time, uploading via the API is not possible. We made a conscious\nchoice not to add this for the following reasons:\n\n* Instagram is about your life on the go – we hope to encourage photos\n  from within the app.\n* We want to fight spam & low quality photos. Once we allow uploading\n  from other sources, it's harder to control what comes into the Instagram\n  ecosystem. All this being said, we're working on ways to ensure users\n  have a consistent and high-quality experience on our platform.\n"
+        },
+        {
+            "name": "Commnts"
+        },
+        {
+            "name": "Likes"
+        },
+        {
+            "name": "Tags"
+        },
+        {
+            "name": "Location"
+        },
+        {
+            "name": "Subscribtions"
+        }
+    ],
+    "securityDefinitions": {
+        "oauth": {
+            "type": "oauth2",
+            "flow": "implicit",
+            "authorizationUrl": "https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token",
+            "scopes": {
+                "basic": "to read any and all data related to a user (e.g. following/followed-by\n lists, photos, etc.) (granted by default)\n",
+                "comments": "to create or delete comments on a user’s behalf",
+                "relationships": "to follow and unfollow users on a user’s behalf",
+                "likes": "to like and unlike items on a user’s behalf"
+            }
+        },
+        "key": {
+            "type": "apiKey",
+            "in": "query",
+            "name": "access_token"
+        }
+    },
+    "security": [
+        {
+            "oauth": [
+                "basic",
+                "comments",
+                "relationships",
+                "likes"
+            ]
+        },
+        {
+            "key": []
+        }
+    ],
+    "parameters": {
+        "user-id": {
+            "name": "user-id",
+            "in": "path",
+            "description": "The user identifier number",
+            "type": "number",
+            "required": true
+        },
+        "tag-name": {
+            "name": "tag-name",
+            "in": "path",
+            "description": "Tag name",
+            "type": "string",
+            "required": true
+        }
+    },
+    "paths": {
+        "/users/self/feed": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "See the authenticated user's feed.",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.s",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id.",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "profile_picture": {
+                    "type": "string"
+                },
+                "bio": {
+                    "type": "string"
+                },
+                "website": {
+                    "type": "string"
+                },
+                "counts": {
+                    "type": "object",
+                    "properties": {
+                        "media": {
+                            "type": "integer"
+                        },
+                        "follows": {
+                            "type": "integer"
+                        },
+                        "follwed_by": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "Media": {
+            "type": "object",
+            "properties": {
+                "created_time": {
+                    "description": "Epoc time (ms)",
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "user": {
+                    "$ref": "#/definitions/MiniProfile"
+                },
+                "users_in_photo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MiniProfile"
+                    }
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "comments:": {
+                    "type": "object",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Comment"
+                            }
+                        }
+                    }
+                },
+                "likes": {
+                    "type": "object",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MiniProfile"
+                            }
+                        }
+                    }
+                },
+                "images": {
+                    "properties": {
+                        "low_resolution": {
+                            "$ref": "#/definitions/Image"
+                        },
+                        "thumbnail": {
+                            "$ref": "#/definitions/Image"
+                        },
+                        "standard_resolution": {
+                            "$ref": "#/definitions/Image"
+                        }
+                    }
+                },
+                "videos": {
+                    "properties": {
+                        "low_resolution": {
+                            "$ref": "#/definitions/Image"
+                        },
+                        "standard_resolution": {
+                            "$ref": "#/definitions/Image"
+                        }
+                    }
+                }
+            }
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                }
+            }
+        },
+        "Comment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "created_time": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "from": {
+                    "$ref": "#/definitions/MiniProfile"
+                }
+            }
+        },
+        "Like": {
+            "type": "object",
+            "properties": {
+                "user_name": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "Tag": {
+            "type": "object",
+            "properties": {
+                "media_count": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Image": {
+            "type": "object",
+            "properties": {
+                "width": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "MiniProfile": {
+            "type": "object",
+            "description": "A shorter version of User for likes array",
+            "properties": {
+                "user_name": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "profile_picture": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

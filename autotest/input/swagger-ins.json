@@ -93,6 +93,952 @@
         }
     },
     "paths": {
+        "/users/{user-id}": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/user-id"
+                }
+            ],
+            "get": {
+                "security": [
+                    {
+                        "key": []
+                    },
+                    {
+                        "oauth": [
+                            "basic"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "description": "Get basic information about a user.",
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/self/feed": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "See the authenticated user's feed.",
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.s",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id.",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user-id}/media/recent": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/user-id"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get the most recent media published by a user. To get the most recent\nmedia published by the owner of the access token, you can use `self`\ninstead of the `user-id`.\n",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "max_timestamp",
+                        "in": "query",
+                        "description": "Return media before this UNIX timestamp.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_timestamp",
+                        "in": "query",
+                        "description": "Return media after this UNIX timestamp.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id.",
+                        "type": "string"
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/users/self/media/liked": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "See the list of media liked by the authenticated user.\nPrivate media is returned as long as the authenticated user\nhas permissionto view that media. Liked media lists are only\navailable for the currently authenticated user.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "max_like_id",
+                        "in": "query",
+                        "description": "Return media liked before this id.",
+                        "type": "integer"
+                    }
+                ]
+            }
+        },
+        "/users/search": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Search for a user by name.",
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "A query string",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Number of users to return.",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MiniProfile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user-id}/follows": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/user-id"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Relationships"
+                ],
+                "description": "Get the list of users this user follows.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MiniProfile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user-id}/followed-by": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/user-id"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Relationships"
+                ],
+                "description": "Get the list of users this user is followed by.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MiniProfile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/self/requested-by": {
+            "get": {
+                "tags": [
+                    "Relationships"
+                ],
+                "description": "List the users who have requested this user's permission to follow.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MiniProfile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user-id}/relationship": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/user-id"
+                }
+            ],
+            "post": {
+                "tags": [
+                    "Relationships"
+                ],
+                "description": "Modify the relationship between the current user and thetarget user.\n",
+                "security": [
+                    {
+                        "oauth": [
+                            "relationships"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "action",
+                        "in": "body",
+                        "description": "One of follow/unfollow/block/unblock/approve/ignore.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "follow",
+                                "unfollow",
+                                "block",
+                                "unblock",
+                                "approve"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MiniProfile"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/{media-id}": {
+            "parameters": [
+                {
+                    "name": "media-id",
+                    "in": "path",
+                    "description": "The media ID",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "description": "Get information about a media object.\nThe returned type key will allow you to differentiate between `image`\nand `video` media.\n\nNote: if you authenticate with an OAuth Token, you will receive the\n`user_has_liked` key which quickly tells you whether the current user\nhas liked this media item.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Media"
+                        }
+                    }
+                }
+            }
+        },
+        "/media1/{shortcode}": {
+            "parameters": [
+                {
+                    "name": "shortcode",
+                    "in": "path",
+                    "description": "The media shortcode",
+                    "type": "string",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "description": "This endpoint returns the same response as **GET** `/media/media-id`.\n\nA media object's shortcode can be found in its shortlink URL.\nAn example shortlink is `http://instagram.com/p/D/`\nIts corresponding shortcode is D.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Media"
+                        }
+                    }
+                }
+            }
+        },
+        "/media/search": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "description": "Search for media in a given area. The default time span is set to 5\ndays. The time span must not exceed 7 days. Defaults time stamps cover\nthe last 5 days. Can return mix of image and video types.\n",
+                "parameters": [
+                    {
+                        "name": "LAT",
+                        "description": "Latitude of the center search coordinate. If used, lng is required.\n",
+                        "type": "number",
+                        "in": "query"
+                    },
+                    {
+                        "name": "MIN_TIMESTAMP",
+                        "description": "A unix timestamp. All media returned will be taken later than\nthis timestamp.\n",
+                        "type": "integer",
+                        "in": "query"
+                    },
+                    {
+                        "name": "LNG",
+                        "description": "Longitude of the center search coordinate. If used, lat is required.\n",
+                        "type": "number",
+                        "in": "query"
+                    },
+                    {
+                        "name": "MAX_TIMESTAMP",
+                        "description": "A unix timestamp. All media returned will be taken earlier than this\ntimestamp.\n",
+                        "type": "integer",
+                        "in": "query"
+                    },
+                    {
+                        "name": "DISTANCE",
+                        "description": "Default is 1km (distance=1000), max distance is 5km.",
+                        "type": "integer",
+                        "maximum": 5000,
+                        "default": 1000,
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "description": "List of all media with added `distance` property",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "allOf": [
+                                            {
+                                                "$ref": "#/definitions/Media"
+                                            },
+                                            {
+                                                "properties": {
+                                                    "distance": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/popular": {
+            "get": {
+                "tags": [
+                    "Media"
+                ],
+                "description": "Get a list of what media is most popular at the moment.\nCan return mix of image and video types.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/{media-id}/comments": {
+            "parameters": [
+                {
+                    "name": "media-id",
+                    "in": "path",
+                    "description": "Media ID",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "description": "Get a list of recent comments on a media object.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Comment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comments",
+                    "Media"
+                ],
+                "description": "Create a comment on a media object with the following rules:\n\n* The total length of the comment cannot exceed 300 characters.\n* The comment cannot contain more than 4 hashtags.\n* The comment cannot contain more than 1 URL.\n* The comment cannot consist of all capital letters.\n",
+                "security": [
+                    {
+                        "oauth": [
+                            "comments"
+                        ]
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "TEXT",
+                        "description": "Text to post as a comment on the media object as specified in\nmedia-id.\n",
+                        "in": "body",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "description": "Remove a comment either on the authenticated user's media object or\nauthored by the authenticated user.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/{media-id}/likes": {
+            "parameters": [
+                {
+                    "name": "media-id",
+                    "in": "path",
+                    "description": "Media ID",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Likes",
+                    "Media"
+                ],
+                "description": "Get a list of users who have liked this media.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Like"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Likes"
+                ],
+                "description": "Set a like on this media by the currently authenticated user.",
+                "security": [
+                    {
+                        "oauth": [
+                            "comments"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Likes"
+                ],
+                "description": "Remove a like on this media by the currently authenticated user.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags/{tag-name}": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/tag-name"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "description": "Get information about a tag object.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Tag"
+                        }
+                    }
+                }
+            }
+        },
+        "/tags/{tag-name}/media/recent": {
+            "parameters": [
+                {
+                    "$ref": "#/parameters/tag-name"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "description": "Get a list of recently tagged media. Use the `max_tag_id` and\n`min_tag_id` parameters in the pagination response to paginate through\nthese objects.\n",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Tag"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tags/search": {
+            "get": {
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "q",
+                        "description": "A valid tag name without a leading #. (eg. snowy, nofilter)\n",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "meta": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Tag"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/locations/{location-id}": {
+            "parameters": [
+                {
+                    "name": "location-id",
+                    "description": "Location ID",
+                    "in": "path",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Location"
+                ],
+                "description": "Get information about a location.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Location"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/locations/{location-id}/media/recent": {
+            "parameters": [
+                {
+                    "name": "location-id",
+                    "description": "Location ID",
+                    "in": "path",
+                    "type": "integer",
+                    "required": true
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Location",
+                    "Media"
+                ],
+                "description": "Get a list of recent media objects from a given location.",
+                "parameters": [
+                    {
+                        "name": "max_timestamp",
+                        "in": "query",
+                        "description": "Return media before this UNIX timestamp.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_timestamp",
+                        "in": "query",
+                        "description": "Return media after this UNIX timestamp.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id.",
+                        "type": "string"
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Media"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/locations/search": {
+            "get": {
+                "tags": [
+                    "Location"
+                ],
+                "description": "Search for a location by geographic coordinate.",
+                "parameters": [
+                    {
+                        "name": "distance",
+                        "in": "query",
+                        "description": "Default is 1000m (distance=1000), max distance is 5000.",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "facebook_places_id",
+                        "in": "query",
+                        "description": "Returns a location mapped off of a Facebook places id. If used, a\nFoursquare id and lat, lng are not required.\n",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "foursquare_id",
+                        "in": "query",
+                        "description": "returns a location mapped off of a foursquare v1 api location id.\nIf used, you are not required to use lat and lng. Note that this\nmethod is deprecated; you should use the new foursquare IDs with V2\nof their API.\n",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "atitude of the center search coordinate. If used, lng is required.\n",
+                        "type": "number"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "description": "ongitude of the center search coordinate. If used, lat is required.\n",
+                        "type": "number"
+                    },
+                    {
+                        "name": "foursquare_v2_id",
+                        "in": "query",
+                        "description": "Returns a location mapped off of a foursquare v2 api location id. If\nused, you are not required to use lat and lng.\n",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Location"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/geographies/{geo-id}/media/recent": {
             "parameters": [
                 {

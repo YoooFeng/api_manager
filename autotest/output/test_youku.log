@@ -1,0 +1,165 @@
+2016-05-22 16:18:06,665 - my_tester.py:427 - tst - TESTING POST /v2/users/friendship/followers.json?
+2016-05-22 16:18:07,282 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,282 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,282 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total', u'users']
+2016-05-22 16:18:07,282 - my_tester.py:200 - tst - Missing parameters in response:['playlists_count', 'avatar_large', 'statuses_count', 'description', 'following_count', 'videos_count', 'gender', 'name', 'favorites_count', 'followers_count', 'link', 'avatar', 'id', 'regist_time']
+2016-05-22 16:18:07,282 - my_tester.py:427 - tst - TESTING POST /v2/comments/show.json?
+2016-05-22 16:18:07,354 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,354 - my_tester.py:140 - tst - Got type error:content,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:140 - tst - Got type error:published,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:link,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:title,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:link,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:id,should be <type 'int'>, but is <type 'str'>
+2016-05-22 16:18:07,354 - my_tester.py:134 - tst - Got type error:name,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,355 - my_tester.py:140 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,355 - my_tester.py:427 - tst - TESTING POST /v2/users/friendship/followings.json?
+2016-05-22 16:18:07,532 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,532 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,532 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total', u'users']
+2016-05-22 16:18:07,532 - my_tester.py:200 - tst - Missing parameters in response:['playlists_count', 'avatar_large', 'statuses_count', 'description', 'following_count', 'videos_count', 'gender', 'name', 'favorites_count', 'followers_count', 'link', 'avatar', 'id', 'regist_time']
+2016-05-22 16:18:07,532 - my_tester.py:427 - tst - TESTING POST /v2/comments/by_me.json?
+2016-05-22 16:18:07,690 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,690 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,690 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'count', u'total', u'user_id', u'page', u'comments']
+2016-05-22 16:18:07,690 - my_tester.py:200 - tst - Missing parameters in response:['content', 'video', 'id', 'published']
+2016-05-22 16:18:07,690 - my_tester.py:427 - tst - TESTING POST /v2/comments/show_batch.json?
+2016-05-22 16:18:07,759 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,759 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,759 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total', u'comments']
+2016-05-22 16:18:07,759 - my_tester.py:200 - tst - Missing parameters in response:['content', 'published', 'video', 'id', 'user']
+2016-05-22 16:18:07,759 - my_tester.py:427 - tst - TESTING POST /v2/videos/destroy.json?
+2016-05-22 16:18:07,828 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:07,828 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,829 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:07,829 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:07,829 - my_tester.py:427 - tst - TESTING POST /v2/comments/destroy.json?
+2016-05-22 16:18:07,878 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:07,878 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,878 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:07,878 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:07,880 - my_tester.py:427 - tst - TESTING POST /v2/comments/by_mention_me.json?
+2016-05-22 16:18:07,930 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:07,930 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:07,930 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:07,930 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:07,930 - my_tester.py:427 - tst - TESTING POST /v2/users/myinfo.json?
+2016-05-22 16:18:07,999 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:avatar_large,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:description,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:gender,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:name,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:link,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:avatar,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'int'>
+2016-05-22 16:18:07,999 - my_tester.py:140 - tst - Got type error:regist_time,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,000 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'is_share', u'is_verified', u'ytid', u'is_vip']
+2016-05-22 16:18:08,000 - my_tester.py:427 - tst - TESTING POST /v2/videos/favorite/create.json?
+2016-05-22 16:18:08,065 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,065 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,065 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'id']
+2016-05-22 16:18:08,065 - my_tester.py:427 - tst - TESTING POST /v2/users/show_batch.json?
+2016-05-22 16:18:08,145 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,147 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,147 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total', u'users']
+2016-05-22 16:18:08,147 - my_tester.py:200 - tst - Missing parameters in response:['playlists_count', 'avatar_large', 'statuses_count', 'description', 'following_count', 'videos_count', 'gender', 'favorites_count', 'name', 'vv_count', 'followers_count', 'subscribe_count', 'link', 'avatar', 'id', 'regist_time']
+2016-05-22 16:18:08,147 - my_tester.py:427 - tst - TESTING POST /v2/comments/to_me.json?
+2016-05-22 16:18:08,198 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:08,198 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,198 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:08,198 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:08,198 - my_tester.py:427 - tst - TESTING POST /v2/users/show.json?
+2016-05-22 16:18:08,269 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:avatar_large,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:description,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:gender,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:avatar,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:link,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:regist_time,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'int'>
+2016-05-22 16:18:08,269 - my_tester.py:140 - tst - Got type error:name,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,269 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'is_verified', u'is_share', u'follower', u'is_vip', u'following', u'ytid']
+2016-05-22 16:18:08,269 - my_tester.py:427 - tst - TESTING POST /v2/users/friendship/create.json?
+2016-05-22 16:18:08,326 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:08,326 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,326 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:08,326 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:08,328 - my_tester.py:427 - tst - TESTING POST /v2/comments/by_reply_me.json?
+2016-05-22 16:18:08,384 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:08,384 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,384 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:08,384 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:08,384 - my_tester.py:427 - tst - TESTING POST /v2/videos/favorite/destroy.json?
+2016-05-22 16:18:08,438 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,438 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,438 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'id']
+2016-05-22 16:18:08,438 - my_tester.py:427 - tst - TESTING POST /v2/comments/create.json?
+2016-05-22 16:18:08,565 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,565 - my_tester.py:140 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,565 - my_tester.py:427 - tst - TESTING GET /v2/videos/favorite/by_me.json?access_token=24f0d08646c6b21bc5ad4ce8641e6e50&client_id=007ad73d2453bd70
+2016-05-22 16:18:08,618 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,618 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,618 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'count', u'total', u'page', u'videos']
+2016-05-22 16:18:08,618 - my_tester.py:427 - tst - TESTING GET /v2/users/subscribe/notice.json?access_token=24f0d08646c6b21bc5ad4ce8641e6e50&client_id=007ad73d2453bd70
+2016-05-22 16:18:08,671 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,671 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'shows']
+2016-05-22 16:18:08,671 - my_tester.py:200 - tst - Missing parameters in response:['show']
+2016-05-22 16:18:08,671 - my_tester.py:427 - tst - TESTING GET /v2/videos/by_me.json?client_id=007ad73d2453bd70
+2016-05-22 16:18:08,717 - my_tester.py:446 - tst - Got status code: 401
+2016-05-22 16:18:08,717 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,717 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:08,717 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:08,717 - my_tester.py:427 - tst - TESTING GET /v2/videos/show_basic_batch.json?video_ids=XMjg1MTcyNDQ0%2CXNDY5Njc0MTA4&client_id=007ad73d2453bd70
+2016-05-22 16:18:08,790 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,792 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,792 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'total', u'videos']
+2016-05-22 16:18:08,792 - my_tester.py:200 - tst - Missing parameters in response:['category']
+2016-05-22 16:18:08,792 - my_tester.py:427 - tst - TESTING GET /v2/videos/show_basic.json?client_id=007ad73d2453bd70
+2016-05-22 16:18:08,832 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:08,832 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:08,832 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:08,832 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:08,834 - my_tester.py:427 - tst - TESTING GET /v2/videos/show.json?video_id=XMjg1MTcyNDQ0&client_id=007ad73d2453bd70
+2016-05-22 16:18:08,891 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:08,891 - my_tester.py:140 - tst - Got type error:down_count,should be <type 'unicode'>, but is <type 'int'>
+2016-05-22 16:18:08,891 - my_tester.py:140 - tst - Got type error:copyright_type,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,891 - my_tester.py:140 - tst - Got type error:public_type,should be <type 'unicode'>, but is <type 'str'>
+2016-05-22 16:18:08,891 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'player', u'duration', u'id', u'favorite_count', u'up_count', u'category', u'view_count', u'title', u'state', u'source', u'comment_count', u'thumbnail', u'description', u'tags', u'streamtypes', u'link', u'user', u'ischannel', u'is_panorama', u'bigThumbnail', u'operation_limit', u'created', u'published']
+2016-05-22 16:18:08,891 - my_tester.py:200 - tst - Missing parameters in response:['show']
+2016-05-22 16:18:08,891 - my_tester.py:427 - tst - TESTING GET /v2/videos/by_related.json?video_id=XMjg1MTcyNDQ0&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,042 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,043 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,043 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'ver', u'videos', u'apptype', u'module', u'pg', u'ord', u'total']
+2016-05-22 16:18:09,043 - my_tester.py:427 - tst - TESTING GET /v2/videos/favorite/by_user.json?user_id=87919223&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,153 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,153 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,153 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'count', u'total', u'page', u'videos']
+2016-05-22 16:18:09,154 - my_tester.py:427 - tst - TESTING GET /v2/comments/hot/by_video.json?video_id=XMjg1MTcyNDQ0&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,322 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,322 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,322 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'count', u'total', u'page', u'comments', u'video_id']
+2016-05-22 16:18:09,323 - my_tester.py:200 - tst - Missing parameters in response:['content', 'source', 'published', 'id', 'user']
+2016-05-22 16:18:09,323 - my_tester.py:427 - tst - TESTING GET /v2/users/subscribe/get.json?access_token=24f0d08646c6b21bc5ad4ce8641e6e50&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,405 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,405 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'shows']
+2016-05-22 16:18:09,405 - my_tester.py:200 - tst - Missing parameters in response:['show']
+2016-05-22 16:18:09,405 - my_tester.py:427 - tst - TESTING GET /v2/users/subscribe/create.json?access_token=24f0d08646c6b21bc5ad4ce8641e6e50&show_id=2a7260de1faa11e097c0&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,454 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:09,454 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,454 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:09,456 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:09,456 - my_tester.py:427 - tst - TESTING GET /v2/videos/update.json?access_token=24f0d08646c6b21bc5ad4ce8641e6e50&video_id=XMjg1MTcyNDQ0&client_id=007ad73d2453bd70
+2016-05-22 16:18:09,513 - my_tester.py:446 - tst - Got status code: 400
+2016-05-22 16:18:09,513 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,513 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'error']
+2016-05-22 16:18:09,513 - my_tester.py:200 - tst - Missing parameters in response:['code', 'type', 'description']
+2016-05-22 16:18:09,513 - my_tester.py:427 - tst - TESTING GET /v2/comments/by_video.json?client_id=007ad73d2453bd70
+2016-05-22 16:18:09,555 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,555 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,555 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'a', u' ', u'e', u'd', u'g', u'f', u'i', u'k', u'm', u's', u'o', u'n', u'p', u'S', u'r', u't', u'y', u'_']
+2016-05-22 16:18:09,555 - my_tester.py:200 - tst - Missing parameters in response:['content', 'source', 'published', 'id', 'user']
+2016-05-22 16:18:09,555 - my_tester.py:427 - tst - TESTING GET /v2/videos/by_category.json?client_id=007ad73d2453bd70
+2016-05-22 16:18:09,681 - my_tester.py:446 - tst - Got status code: 200
+2016-05-22 16:18:09,683 - my_tester.py:194 - tst - Data structure of response is different from Swagger Spec!
+2016-05-22 16:18:09,683 - my_tester.py:197 - tst - Undefined response parameters in Swagger Spec:[u'count', u'total', u'page', u'videos']

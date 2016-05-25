@@ -1,0 +1,2762 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Youku API",
+        "description": "优酷视频云的YoukuOpenAPI",
+        "version": "2.0"
+    },
+    "host": "openapi.youku.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v2",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users/myinfo.json": {
+            "post": {
+                "summary": "我的详细信息(users/myinfo)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/show.json": {
+            "post": {
+                "summary": "单条用户详细信息(users/show)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "用户ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/show_batch.json": {
+            "post": {
+                "summary": "多条用户详细信息(users/show_batch)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "formData",
+                        "description": "用户ID,多个用逗号分隔",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_names",
+                        "in": "formData",
+                        "description": "用户名,多个用逗号分隔",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/friendship/followings.json": {
+            "post": {
+                "summary": "用户订阅列表(users/friendship/followings)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "用户ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users1"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/friendship/followers.json": {
+            "post": {
+                "summary": "用户粉丝列表(users/friendship/followers)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "用户ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users1"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/friendship/create.json": {
+            "post": {
+                "summary": "订阅用户(users/friendship/create)",
+                "tags": [
+                    "users"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "关注用户ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "关注用户名",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users2"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/subscribe/create.json": {
+            "get": {
+                "summary": "收藏节目(users/subscribe/create)",
+                "tags": [
+                    "users"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "show_id",
+                        "in": "query",
+                        "description": "节目id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users3"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/subscribe/get.json": {
+            "get": {
+                "summary": "获取用户收藏节目列表(users/subscribe/get)",
+                "tags": [
+                    "users"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小 page*count必须小于等于1000",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users4"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/subscribe/notice.json": {
+            "get": {
+                "summary": "收藏节目更新通知(users/subscribe/notice)",
+                "tags": [
+                    "users"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/users4"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/show.json": {
+            "post": {
+                "summary": "单条评论详细信息(comments/show)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "comment_id",
+                        "in": "formData",
+                        "description": "评论ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/show_batch.json": {
+            "post": {
+                "summary": "多条评论详细信息(comments/show_batch)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "comment_ids",
+                        "in": "formData",
+                        "description": "评论ID,多个用逗号分隔",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/by_video.json": {
+            "get": {
+                "summary": "根据视频获取评论(comments/by_video)",
+                "tags": [
+                    "comments"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页数量",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments1"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/hot/by_video.json": {
+            "get": {
+                "summary": "根据视频获取精华评论(comments/hot/by_video)",
+                "tags": [
+                    "comments"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments1"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/by_me.json": {
+            "post": {
+                "summary": "我发表视频评论(comments/by_me)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments2"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/by_mention_me.json": {
+            "post": {
+                "summary": "提及我的视频评论(comments/by_mention_me)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments2"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/by_reply_me.json": {
+            "post": {
+                "summary": "回复我的视频评论(comments/by_reply_me)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments3"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/to_me.json": {
+            "post": {
+                "summary": "我收到的视频评论(comments/to_me)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "formData",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "formData",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments4"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/create.json": {
+            "post": {
+                "summary": "评论创建(comments/create)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "formData",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "content",
+                        "in": "formData",
+                        "description": "评论内容",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "reply_id",
+                        "in": "formData",
+                        "description": "回复ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "captcha_key",
+                        "in": "formData",
+                        "description": "验证码key",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "captcha_text",
+                        "in": "formData",
+                        "description": "验证码内容",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments5"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/comments/destroy.json": {
+            "post": {
+                "summary": "评论删除(comments/destroy)",
+                "tags": [
+                    "comments"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "comment_id",
+                        "in": "formData",
+                        "description": "评论ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/comments5"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/show_basic.json": {
+            "get": {
+                "summary": "单条视频基本信息(videos/show_basic)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_url",
+                        "in": "query",
+                        "description": "视频播放页URL",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/show_basic_batch.json": {
+            "get": {
+                "summary": "多条视频基本信息(videos/show_basic_batch)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_ids",
+                        "in": "query",
+                        "description": "多条视频ID，用逗号分隔",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos0"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/show.json": {
+            "get": {
+                "summary": "单条视频详细信息(videos/show)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ext",
+                        "in": "query",
+                        "description": "视频扩展信息返回， 多个用逗号分隔",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos1"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/by_me.json": {
+            "get": {
+                "summary": "我上传的视频(videos/by_me)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderby",
+                        "in": "query",
+                        "description": "排序 published: 发布时间 view-count: 总播放数 comment-count: 总评论数 favorite-count: 总收藏数",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "last_item",
+                        "in": "query",
+                        "description": "上次翻页的最后一条记录的信息，包括页数、排序字段值和视频id，直接使用接口返回的last_item值即可",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos2"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/update.json": {
+            "get": {
+                "summary": "视频更新(videos/update)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "视频标题 长度限制为 2-50 个半角字符 不能全部为数字",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "视频标签 单个标签2-6个汉字 标签个数不能超过10个 单个标签最少2个字母，最多12个字母 单个标签最少2个汉字，最多6个汉字",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "分类名称",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "copyright_type",
+                        "in": "query",
+                        "description": "版权所有 original: 原创 reproduced: 转载",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "public_type",
+                        "in": "query",
+                        "description": "视频权限 all: 公开 friend: 仅好友 password: 输入密码观看",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "watch_password",
+                        "in": "query",
+                        "description": "观看密码明文 当public_type为password时，此为必须项",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "视频描述",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "thumbnail_seq",
+                        "in": "query",
+                        "description": "视频截图序号",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos3"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/destroy.json": {
+            "post": {
+                "summary": "视频删除(videos/destroy)",
+                "tags": [
+                    "videos"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "formData",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos4"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/by_related.json": {
+            "get": {
+                "summary": "相关视频(videos/by_related)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "query",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "返回数量",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos5"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/favorite/by_me.json": {
+            "get": {
+                "summary": "我收藏的视频(videos/favorite/by_me)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderby",
+                        "in": "query",
+                        "description": "排序 favorite-time: 收藏时间",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos6"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/favorite/by_user.json": {
+            "get": {
+                "summary": "用户收藏的视频(videos/favorite/by_user)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "user_name",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderby",
+                        "in": "query",
+                        "description": "排序 favorite-time: 收藏时间",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos6"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/favorite/create.json": {
+            "post": {
+                "summary": "视频收藏(videos/favorite/create)",
+                "tags": [
+                    "videos"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "formData",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos7"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/favorite/destroy.json": {
+            "post": {
+                "summary": "视频收藏取消(videos/favorite/destroy)",
+                "tags": [
+                    "videos"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "formData",
+                        "description": "OAuth2授权 获取access_token接口 手动获取access_token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "video_id",
+                        "in": "formData",
+                        "description": "视频ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos7"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/videos/by_category.json": {
+            "get": {
+                "summary": "根据分类获取视频(videos/by_category)",
+                "tags": [
+                    "videos"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "应用Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "分类",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "genre",
+                        "in": "query",
+                        "description": "类型",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "时间范围 today: 今日 week: 本周 month: 本月 history: 历史",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderby",
+                        "in": "query",
+                        "description": "排序 published: 发布时间 view-count: 总播放数 comment-count: 总评论数 reference-count: 总引用 favorite-time: 收藏时间 favorite-count: 总收藏数",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "页数",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/videos8"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "show": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "节目ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "节目名称"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "节目链接"
+                },
+                "play_link": {
+                    "type": "string",
+                    "description": "节目播放链接"
+                },
+                "poster": {
+                    "type": "string",
+                    "description": "节目海报"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "节目图片"
+                },
+                "streamtypes": {
+                    "type": "string",
+                    "description": "流格式flvhd flv 3gphd 3gp hd hd2"
+                },
+                "episode_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总集数"
+                },
+                "episode_updated": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "更新至"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "score": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "评分"
+                },
+                "paid": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否付费0.否 1.是"
+                },
+                "released": {
+                    "type": "string",
+                    "description": "节目发行时间(YYYY-MM-DD)"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "优酷发行时间(YYYY-MM-DD)"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "节目类型"
+                },
+                "hasvideotype": {
+                    "type": "array",
+                    "items": {},
+                    "description": "节目包含的视频类型"
+                },
+                "completed": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "是否完结"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "lastupdate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "节目最后更新时间"
+                }
+            }
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户个人空间地址"
+                }
+            }
+        },
+        "video": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频链接"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                }
+            }
+        },
+        "source": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "评论来源"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "来源链接"
+                }
+            }
+        },
+        "users0": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "subscribe_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "被订阅数"
+                },
+                "vv_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频播放数"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users1": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "following": {
+                    "type": "boolean",
+                    "description": "是否是我的关注"
+                },
+                "follower": {
+                    "type": "boolean",
+                    "description": "是否是我的粉丝"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "用户ID"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "用户名"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "用户地址"
+                },
+                "avatar": {
+                    "type": "string",
+                    "description": "头像"
+                },
+                "avatar_large": {
+                    "type": "string",
+                    "description": "大头像"
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "性别 男：m 女：f 未知：u"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "描述"
+                },
+                "videos_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总视频数"
+                },
+                "playlists_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总专辑数"
+                },
+                "favorites_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏视频数"
+                },
+                "followers_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "粉丝数"
+                },
+                "following_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "关注数"
+                },
+                "statuses_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "动态数"
+                },
+                "regist_time": {
+                    "type": "string",
+                    "description": "注册时间"
+                }
+            }
+        },
+        "users3": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "结果码（为0时表示成功，小于0时失败）"
+                }
+            }
+        },
+        "users4": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "符合条件的节目数量"
+                },
+                "show": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/show"
+                    }
+                }
+            }
+        },
+        "comments0": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评论内容"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "video": {
+                    "$ref": "#/definitions/video"
+                }
+            }
+        },
+        "comments1": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评论内容"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                }
+            }
+        },
+        "comments2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评论内容"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "video": {
+                    "$ref": "#/definitions/video"
+                }
+            }
+        },
+        "comments3": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评论内容"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "video": {
+                    "$ref": "#/definitions/video"
+                },
+                "source_comment": {
+                    "type": "object",
+                    "description": "源评论对象"
+                }
+            }
+        },
+        "comments4": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "评论内容"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "video": {
+                    "$ref": "#/definitions/video"
+                }
+            }
+        },
+        "comments5": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "评论ID"
+                }
+            }
+        },
+        "videos0": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "视频描述"
+                },
+                "player": {
+                    "type": "string",
+                    "description": "播放器"
+                },
+                "public_type": {
+                    "type": "string",
+                    "description": "公开类型 all: 公开 friend: 仅好友观看 password: 输入密码观看"
+                },
+                "copyright_type": {
+                    "type": "string",
+                    "description": "版权所有 original: 原创 reproduced: 转载"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                }
+            }
+        },
+        "videos1": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图（小）"
+                },
+                "bigThumbnail": {
+                    "type": "string",
+                    "description": "视频截图（大）"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "created": {
+                    "type": "string",
+                    "description": "创建时间"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "视频描述"
+                },
+                "player": {
+                    "type": "string",
+                    "description": "播放器"
+                },
+                "public_type": {
+                    "type": "string",
+                    "description": "公开类型 all: 公开 friend: 仅好友观看 password: 输入密码观看"
+                },
+                "copyright_type": {
+                    "type": "string",
+                    "description": "版权所有 original: 原创 reproduced: 转载"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "tags": {
+                    "type": "string",
+                    "description": "视频标签， 多个标签用逗号分隔"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "up_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总顶数"
+                },
+                "down_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总踩数"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                },
+                "blocked_reason": {
+                    "type": "object",
+                    "description": "屏蔽理由，当视频状态为blocked"
+                },
+                "thumbnails": {
+                    "type": "object",
+                    "description": "多张截图（默认不返回）"
+                },
+                "show": {
+                    "$ref": "#/definitions/show"
+                },
+                "dvd": {
+                    "type": "object",
+                    "description": "DVD属性对象（默认不返回）"
+                },
+                "source": {
+                    "$ref": "#/definitions/source"
+                },
+                "reference_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "引用数"
+                }
+            }
+        },
+        "videos2": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "视频描述"
+                },
+                "player": {
+                    "type": "string",
+                    "description": "播放器"
+                },
+                "public_type": {
+                    "type": "string",
+                    "description": "公开类型 all: 公开 friend: 仅好友观看 password: 输入密码观看"
+                },
+                "copyright_type": {
+                    "type": "string",
+                    "description": "版权所有 original: 原创 reproduced: 转载"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                }
+            }
+        },
+        "videos3": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": " "
+                }
+            }
+        },
+        "videos4": {
+            "type": "object",
+            "properties": {}
+        },
+        "videos5": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "up_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总顶数"
+                },
+                "down_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总踩数"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                }
+            }
+        },
+        "videos6": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "up_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总顶数"
+                },
+                "down_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总踩数"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                },
+                "favorite_time": {
+                    "type": "string",
+                    "description": "收藏时间"
+                }
+            }
+        },
+        "videos7": {
+            "type": "object",
+            "properties": {}
+        },
+        "videos8": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "视频唯一ID"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "视频标题"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "视频播放链接"
+                },
+                "thumbnail": {
+                    "type": "string",
+                    "description": "视频截图"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "视频时长，单位：秒"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "视频分类"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "视频状态 normal: 正常 encoding: 转码中 fail: 转码失败 in_review: 审核中 blocked: 已屏蔽"
+                },
+                "view_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总播放数"
+                },
+                "favorite_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总收藏数"
+                },
+                "comment_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总评论数"
+                },
+                "up_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总顶数"
+                },
+                "down_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "总踩数"
+                },
+                "published": {
+                    "type": "string",
+                    "description": "发布时间"
+                },
+                "user": {
+                    "$ref": "#/definitions/user"
+                },
+                "operation_limit": {
+                    "type": "array",
+                    "items": {},
+                    "description": "操作限制 COMMENT_DISABLED: 禁评论 DOWNLOAD_DISABLED: 禁下载"
+                },
+                "streamtypes": {
+                    "type": "array",
+                    "items": {},
+                    "description": "视频格式 flvhd flv 3gphd 3gp hd hd2"
+                },
+                "favorite_time": {
+                    "type": "string",
+                    "description": "收藏时间"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

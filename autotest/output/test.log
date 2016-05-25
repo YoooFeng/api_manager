@@ -1,8 +1,0 @@
-2016-05-17 15:54:27,864 - my_tester.py:395 - tst - TESTING POST /v2/users/myinfo.json?
-2016-05-17 15:54:28,263 - my_tester.py:414 - tst - Got status code: 200
-2016-05-17 15:54:28,263 - my_tester.py:123 - tst - Got type error:id,should be <type 'unicode'>, but is <type 'int'>
-2016-05-17 15:54:28,263 - my_tester.py:165 - tst - Undefined response parameters in Swagger Spec:[u'is_share', u'is_verified', u'ytid', u'is_vip']
-2016-05-17 15:55:23,505 - my_tester.py:395 - tst - TESTING POST /v2/users/show.json?
-2016-05-17 15:55:23,871 - my_tester.py:414 - tst - Got status code: 400
-2016-05-17 15:55:23,871 - my_tester.py:165 - tst - Undefined response parameters in Swagger Spec:[u'error']
-2016-05-17 15:55:23,871 - my_tester.py:168 - tst - Missing parameters in response:['code', 'type', 'description']

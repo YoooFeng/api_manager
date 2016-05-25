@@ -52,7 +52,7 @@ class SwaggerParser(object):
                 arguments = {}
                 with codecs.open(swagger_path, 'r', 'utf-8') as swagger_yaml:
                     swagger_template = swagger_yaml.read()
-                    #swagger_template = swagger_template.replace('\r\n','\n')
+                    swagger_template = swagger_template.replace('\t','')    #去掉制表符
                     swagger_string = jinja2.Template(swagger_template).render(**arguments)
                     self.specification = yaml.load(swagger_string)
                     self.json_specification = json.dumps(self.specification)
@@ -97,15 +97,15 @@ class SwaggerParser(object):
         Returns:
             True if the example has been created, False if an error occured.
         """
-        if def_name in self.definitions_example.keys():  # Already processed
+        if def_name in self.definitions_example.keys():  #已经处理过
             return True
-        elif def_name not in self.specification['definitions'].keys():  # Def does not exist
+        elif def_name not in self.specification['definitions'].keys():  #对象不存在
             return False
 
         self.definitions_example[def_name] = {}
         def_spec = self.specification['definitions'][def_name]
 
-        # Get properties example value
+        #遍历properties中的项
         for prop_name, prop_spec in def_spec['properties'].items():
             example = self.get_example_from_prop_spec(prop_spec,def_name,def_spec,prop_name)
             if isinstance(example, bool):#返回的example是一个bool值时说明嵌套的definition已经处理了，直接跳过
@@ -154,41 +154,44 @@ class SwaggerParser(object):
         Returns:
             An example value
         """
-        if 'example' in prop_spec.keys() and self.use_example:  # From example
+        if 'example' in prop_spec.keys() and self.use_example:  #样例
             return prop_spec['example']
-        elif 'default' in prop_spec.keys():  # From default
+        elif 'default' in prop_spec.keys():  #默认
             return prop_spec['default']
-        elif 'enum' in prop_spec.keys():  # From enum
+        elif 'enum' in prop_spec.keys():  #枚举类型
             return prop_spec['enum'][0]
-        elif '$ref' in prop_spec.keys():  # From definition
+        elif '$ref' in prop_spec.keys():  #参数是另一个definition对象
             return self._example_from_definition(prop_spec)
-        elif 'type' not in prop_spec:  # Complex type
-            return self._example_from_complex_def(prop_spec,def_name,prop_name)
-        elif prop_spec['type'] == 'array':  # Array
+        elif 'type' not in prop_spec:  #复杂的类型，另作处理
+            return self._example_from_complex_def(prop_spec, def_name, prop_name)
+        elif prop_spec['type'] == 'array':  #数组类型
             return self._example_from_array_spec(prop_spec)
-        elif prop_spec['type'] == 'file':  # File
+        elif prop_spec['type'] == 'file':  #文件类型
             return (StringIO('my file contents'), 'hello world.txt')
-        elif prop_spec['type'] == 'object': #Object
+        elif prop_spec['type'] == 'object': #obejetc类型
             return self.get_object_from_object(def_name,def_spec,prop_name)
-        else:  # Basic types
+        else:  #基本类型，包括integer\string\boolean\datetime等
             if 'format' in prop_spec.keys() and prop_spec['format'] == 'date-time':
                 return self._get_example_from_basic_type('datetime')[0]
             else:
                 return self._get_example_from_basic_type(prop_spec['type'])[0]
 
 
-    def get_object_from_object(self,ldef_name,ldef_spec,lprop_name):
+    def get_object_from_object(self, ldef_name, ldef_spec, lprop_name):
         #设计了一个递归函数依层级遍历definition，得到正确的valid_response。
-        self.definitions_example[ldef_name][lprop_name] = {}
-        def_value = ldef_spec['properties'][lprop_name]
-        if def_value.has_key('properties'):
-            for _name, _spec in def_value['properties'].items():
-                lexample = self.get_example_from_prop_spec(_spec,lprop_name,def_value,_name)
-                if lexample is not None:
-                    self.definitions_example[ldef_name][lprop_name][_name] = lexample
-                else:
-                    return False
-        return self.definitions_example[ldef_name][lprop_name]
+        if ldef_name is not None and lprop_name is not None:
+            self.definitions_example[ldef_name][lprop_name] = {}
+            def_value = ldef_spec['properties'][lprop_name]
+            if def_value.has_key('properties'):
+                for _name, _spec in def_value['properties'].items():
+                    lexample = self.get_example_from_prop_spec(_spec,lprop_name,def_value,_name)
+                    if lexample is not None:
+                        self.definitions_example[ldef_name][lprop_name][_name] = lexample
+                    else:
+                        return False
+            return self.definitions_example[ldef_name][lprop_name]
+        else:
+            return None
 
 
 
@@ -207,7 +210,7 @@ class SwaggerParser(object):
         elif type == 'number':
             return [5.5, 5.5]
         elif type == 'string':
-            return [u'string', u'string2']  #返回unicode格式的字符串
+            return ['string', 'string2']  #返回unicode格式的字符串
         elif type == 'datetime':
             return ['2015-08-28T09:02:57.481Z', '2015-08-28T09:02:57.481Z']
         elif type == 'boolean':
@@ -282,6 +285,10 @@ class SwaggerParser(object):
                 return self._get_example_from_basic_type('datetime')
             else:
                 return self._get_example_from_basic_type(prop_spec['items']['type'])
+
+        #items为空
+        elif len(prop_spec['items']) == 0:
+            return None
 
         # Array with definition
         elif '$ref' in prop_spec['items'].keys() or '$ref' in prop_spec['schema']['items'].keys():
@@ -589,8 +596,8 @@ class SwaggerParser(object):
 
         """
         if 'schema' in resp_spec.keys():
-            if resp_spec['schema'].has_key('properties') \
-                    and resp_spec['schema']['properties'].has_key('data') \
+            if 'properties' in resp_spec['schema'] \
+                    and 'data'in resp_spec['schema']['properties'] \
                     and 'object' in resp_spec['schema']['properties']['data'].values(): #针对Instagram的返回结构
                 return 'object'
             if '$ref' in resp_spec['schema']:  # Standard definition
@@ -600,12 +607,8 @@ class SwaggerParser(object):
                 definition_name = self.get_definition_name_from_ref(resp_spec['schema']['items']['$ref'])
                 return [self.definitions_example[definition_name]]
 
-            elif 'items' in resp_spec['schema']['properties']['data'] and resp_spec['schema']['properties']['data']['type'] == 'array':  # Array
-                definition_name = self.get_definition_name_from_ref(resp_spec['schema']['properties']['data']['items']['$ref'])
-                return [self.definitions_example[definition_name]]
-
             elif 'type' in resp_spec['schema']:
-                if 'object' in resp_spec['schema']['type']:
+                if 'object' in resp_spec['schema']['type'] and 'properties' in resp_spec['schema']:
                     if '$ref' in resp_spec['schema']['properties']['data']:
                         definition_name = self.get_definition_name_from_ref(resp_spec['schema']['properties']['data']['$ref'])
                         return [self.definitions_example[definition_name]]
@@ -613,6 +616,10 @@ class SwaggerParser(object):
                         definition_name = self.get_definition_name_from_ref(resp_spec['schema']['properties']['data']['items']['$ref'])
                         return [self.definitions_example[definition_name]]
                 return self.get_example_from_prop_spec(resp_spec['schema'])
+
+            elif 'items' in resp_spec['schema']['properties']['data'] and resp_spec['schema']['properties']['data']['type'] == 'array':  # Array
+                definition_name = self.get_definition_name_from_ref(resp_spec['schema']['properties']['data']['items']['$ref'])
+                return [self.definitions_example[definition_name]]
         else:
             return ''
 
