@@ -14,7 +14,7 @@ try:
 except ImportError:  # Python 3
     from urllib.parse import urlencode
 
-import connexion
+
 
 from swagger_parser import SwaggerParser
 

@@ -13,7 +13,6 @@ try:
 except ImportError:  # Python 3
     from io import StringIO
 
-from swagger_spec_validator.validator20 import validate_spec
 
 
 class SwaggerParser(object):
@@ -62,7 +61,7 @@ class SwaggerParser(object):
             else:
                 raise ValueError('You must specify a swagger_path or dict')
 
-            validate_spec(self.specification, '')
+            #validate_spec(self.specification, '')
         except Exception as exc:
             raise ValueError('{0} is not a valid swagger2.0 file: {1}'.format(swagger_path,
                                                                               exc))

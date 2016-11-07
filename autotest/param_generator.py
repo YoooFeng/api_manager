@@ -3,7 +3,7 @@ from StringIO import StringIO
 
 
 
-def get_example_from_prop_spec(self, prop_spec,param_name):
+def get_example_from_prop_spec(self, prop_spec, param_name):
     """Return an example value from a property specification.
 
     Args:
